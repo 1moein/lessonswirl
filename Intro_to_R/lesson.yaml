@@ -1,0 +1,328 @@
+- Class: meta
+  Course: Marketing Analytics
+  Lesson: Intro to R
+  Author: Dr. Moein Khanlari
+  Type: Standard
+  Organization: UNH
+  Version: 2.4.3
+
+- Class: text
+  Output: Hello and welcome to your Intro to R practice session for our Marketing Analytics course.
+  
+- Class: text
+  Output: In this practice course, I would like to review some of the basic data wrangling operations with you.
+
+- Class: text
+  Output: These are operations that you need to be able to do without any help. 
+
+- Class: text
+  Output: I am not covering everything from the Intro to R script.
+
+- Class: text
+  Output: You will still need to master the Intro to R script by going through it and typing all the code in a blank R script file, modifying it, and checking out the results, to get more practice.
+
+- Class: text
+  Output: But here is how this little interactive practice session will work. I will ask questions, and you will do your best to answer them. When you can not answer, you will get a hint.
+
+- Class: text
+  Output: In R, we can often do the same task in several ways. So, if you type an answer that would normally work, and this interactive course is not accepting it, try to do it in simpler ways, or just type skip() to skip that question. 
+
+- Class: text
+  Output: The textual progress bar right on top of this message shows you where we are as we make progress.
+  
+- Class: text
+  Output: Let us begin.
+   
+- Class: text
+  Output: We usually like to keep data in variables that have names, so we can refer to them or work on them
+  
+- Class: text
+  Output: We can use the assignment sign <- to give a name to a data value, or equivalently to assign a value to a variable name. In your R console, or in the editor, you can always use the Alt- (Alt and minus sign) to insert the assignment arrow.
+
+- Class: text
+  Output: This is the pattern you will need to use.   Variable_name <- Data_Value
+
+- Class: cmd_question
+  Output: Now, create a new variable, call it thisyear and assign the value 2019 to it. 
+  CorrectAnswer: thisyear <- 2019
+  AnswerTests: omnitest(correctExpr='thisyear <- 2019')
+  Hint: thisyear becomes your Variable_name and ...
+
+- Class: cmd_question
+  Output: Good! R does not show you the content of the variable you created. It assumes you already know that. But we can ask R to show us what is inside a variable by typing its name. Now, to see what thisyear is or what data it holds, just type thisyear and hit Enter.
+  CorrectAnswer: thisyear
+  AnswerTests: omnitest(correctExpr='thisyear')
+  Hint: start by typing th and then some more ...
+
+- Class: cmd_question
+  Output: we can use the colon symbol in between two numbers to create a sequence of integers. Can you create the numbers 1 to 50?
+  CorrectAnswer: 1:50
+  AnswerTests: any_of_exprs('1:50', 'c(1:50)')
+  Hint: Something like 1:10 but with a minor difference :), and I know c(1:10), or (1:10) would do the same task, but let's do it the simple way.
+
+- Class: cmd_question
+  Output: You just created some data. Care to give them a name? Now write the same code again but use the <- sign to put the data into a variable called first50.
+  CorrectAnswer: first50 <- 1:50
+  AnswerTests: omnitest(correctExpr='first50 <- 1:50')
+  Hint: Remember what we did with thisyear <- 2019 ?
+
+- Class: cmd_question
+  Output: Good! Can you show me what the first50 variable holds? What should you type?
+  CorrectAnswer: first50
+  AnswerTests: omnitest(correctExpr='first50')
+  Hint: start by typing fi...
+  
+- Class: cmd_question
+  Output: Now let us create some more variables and put them together in a dataset. Create a variable called second50 with values 51 to 100
+  CorrectAnswer: second50 <- 51:100
+  AnswerTests: omnitest(correctExpr='second50 <- 51:100')
+  Hint: Come on! You already know how to do this.
+
+- Class: cmd_question
+  Output: And now create a third variable called years ranging from 1951 to 2000.
+  CorrectAnswer: years <- 1951:2000
+  AnswerTests: omnitest(correctExpr='years <- 1951:2000')
+  Hint: Come on! You already know how to do this. Scroll up to review previous questions...
+
+- Class: text
+  Output: Now let us create a small dataframe consisting of these three variables.
+
+- Class: cmd_question
+  Output:  All we need to do is to put these three variable names into the parentheses and separate the names with a comma. Remember, we are using the data.frame() function.
+  CorrectAnswer: data.frame(first50, second50, years)
+  AnswerTests: omnitest(correctExpr='data.frame(first50, second50, years)')
+  Hint: Just make sure you put variable names in between parentheses in the order we created them. We are not calling the new data frame anything yet.
+
+- Class: cmd_question
+  Output: Looks good! Care to choose a name for this data frame? Use the assignment sign to call this dataframe d. While in the console, hitting the up arrow button will bring up past commands so you don't have to type everything all over again.
+  CorrectAnswer: d <- data.frame(first50, second50, years)
+  AnswerTests: omnitest(correctExpr='d <- data.frame(first50, second50, years)')
+  Hint: Come on! You already know how to do this.
+
+- Class: text
+  Output: Notice that we could have used data.frame(first50, second50, years), or data.frame(first50,second50,years) where there are no spaces after the commas. Both work, but the first format is recommended to increase code readability.
+
+- Class: text
+  Output: As another example, x <- 10 + 10 and x<-10+10 do the same job, but the first one is more readable and recommended.
+ 
+
+- Class: cmd_question
+  Output: Ok, now can you show us what's inside d? Just type the name of the data frame.
+  CorrectAnswer: d
+  AnswerTests: omnitest(correctExpr='d')
+  Hint: What is the name of this data frame? What is the letter after c? 
+
+- Class: text
+  Output: OK. We now have a data frame to work with. Any collection of data, can be called a data set. so d becomes our data set. We often need to do an operation on parts of a dataset rather than on the entire dataset.
+
+- Class: text
+  Output: As a first step, we need to be able to separate some data from it and work on them. For example, we may need to take the average of one of the variables in the dataset.
+  
+- Class: cmd_question
+  Output: We can use the dollar sign $ to select a specific variable in a data frame. For example, mydata$age, selects the age variable in the mydata data frame. can you select the years variable in the d data frame?
+  CorrectAnswer: d$years
+  AnswerTests: omnitest(correctExpr='d$years')
+  Hint: Type the data frame name, then type $, then type the variable name. No space.
+
+- Class: cmd_question
+  Output: Now select the first50 variable from dataset d
+  CorrectAnswer: d$first50
+  AnswerTests: omnitest(correctExpr='d$first50')
+  Hint: Type the data frame name, then type $, then type the variable name. No space.
+
+- Class: cmd_question
+  Output: Now select the second50 variable from dataset d
+  CorrectAnswer: d$second50
+  AnswerTests: omnitest(correctExpr='d$second50')
+  Hint: Type the data frame name, then type $, then type the variable name. No space.
+
+
+- Class: text
+  Output: I hope you have noticed that as soon as you type the $ sign after a dataframe name, are gives you the list of variable names in that data frame to choose from. If you have not noticed it, type d$years now and pause for a moment after typing the dollar sign before typing it all.
+
+- Class: cmd_question
+  Output: Type d$years, but pause for a moment after typing the $ sign
+  CorrectAnswer: d$years
+  AnswerTests: omnitest(correctExpr='d$years')
+  Hint: Type d$years
+
+- Class: cmd_question
+  Output: You can do any operation on a variable that you specify. For example, take d$second50 and add 10 to it using the + sign.
+  CorrectAnswer: d$second50 + 10
+  AnswerTests: any_of_exprs('d$second50 + 10','10 + d$second50')
+  Hint: Try using + between the variable and the number.
+
+- Class: cmd_question
+  Output: the previous command did an operation, but the result was not stored. This time type the same command, but assign it to d$second50 to update d$second50. Remember, just hitting the up arrow brings up the last command so you don't have to type it.
+  CorrectAnswer: d$second50 <- d$second50 + 10
+  AnswerTests: any_of_exprs('d$second50 <- d$second50 + 10','d$second50 <- 10 + d$second50')
+  Hint: More than a hint, Try d$second50 <- d$second50 + 10
+
+
+- Class: cmd_question
+  Output: Yes, we can update and change data values like that. Now change the values in the years variable of the d data frame to numbers 2001 to 2050 using the $ sign to refer to the variable. 
+  CorrectAnswer: d$years <- 2001:2050
+  AnswerTests: omnitest(correctExpr='d$years <- 2001:2050')
+  Hint: you have to assign a sequence of numbers to d$years
+
+- Class: cmd_question
+  Output: OK, enough with the $ sign. We can also select the data in dataframes (and other objects) using indexing. Indexing means specifying the row and column number(s) of the data that we would like to subset. This is a template for indexing from a data frame, dataframename[rownumbers,columnumbers]. if you specify a single value for the rownumbers and a single value for the columnnumbers, you are pointing to a single element of the data frame. Now find the number in row 5 and column 2 of the d data frame.
+  CorrectAnswer: d[5,2]
+  AnswerTests: omnitest(correctExpr='d[5,2]')
+  Hint: Try using the template. your dataframe name is d
+
+- Class: cmd_question
+  Output: if we leave the rownumber/columnnumber blank, all the rows/columns will be selected. We can also use a range of values for rows or columns using the colon symbol. From dataframe d, select rows 2 to 5, and all columns
+  CorrectAnswer: d[2:5,]
+  AnswerTests: omnitest(correctExpr='d[2:5,]')
+  Hint: Leave the column number in the brackets blank. don't forget to put the comma in.
+
+- Class: cmd_question
+  Output: Now select rows 5 to 10 and columns 2 to 3 from d
+  CorrectAnswer: d[5:10,2:3]
+  AnswerTests: omnitest(correctExpr='d[5:10,2:3]')
+  Hint: Both rownumbers and columnnumbers from the template are a range or sequence and have the colon symbol in them.
+
+
+- Class: cmd_question
+  Output: Now I need you to type d and hit Enter/Return so we can see what's inside d
+  CorrectAnswer: d
+  AnswerTests: omnitest(correctExpr='d')
+  Hint: Type d and hit Enter/Return
+
+- Class: cmd_question
+  Output: When we select specific parts of a data frame, we can change them as well. Now Assign the value 2 to d[5:10,2:3]
+  CorrectAnswer: d[5:10,2:3] <- 2
+  AnswerTests: omnitest(correctExpr='d[5:10,2:3] <- 2')
+  Hint: Use the assignment operator <- to assign 2 to d[5:10,2:3].
+
+- Class: cmd_question
+  Output: Now, type d again to see if we successfully changed those values to 2. Scroll up to compare with the original d.
+  CorrectAnswer: d
+  AnswerTests: omnitest(correctExpr='d')
+  Hint: Type d
+
+- Class: text
+  Output: If you scroll up in the R console, you can see that the values we specified are now replaced with 2. 
+
+- Class: text
+  Output: As another example of the operations you can do on a dataset, let's select the second column of d and calculate its mean. Remember that when we are selecting a column, we are selecting ALL ROWS for that column, and the rownumber should be left blank.
+
+- Class: cmd_question
+  Output: Use indexing to select the second column of d and then feed it to the mean() function.
+  CorrectAnswer: mean(d[,2])
+  AnswerTests: omnitest(correctExpr='mean(d[,2])')
+  Hint: Let me give you the answer this time, mean(d[,2]), Type it now.
+
+- Class: cmd_question
+  Output: Now create a new variable, call it mean_of_second50 and assign the mean of the second variable in dataset d to it.
+  CorrectAnswer: mean_of_second50 <- mean(d[,2])
+  AnswerTests: omnitest(correctExpr='mean_of_second50 <- mean(d[,2])')
+  Hint: Let me give you the answer, mean_of_second50 <- mean(d[,2]) Read it, understand it, and then try to type it from memory by thinking about its structure.
+
+- Class: mult_question
+  Output: Could we have done the above mean calculation using the $ sign instead of indexing?
+  AnswerChoices: YES;NO
+  CorrectAnswer: YES
+  AnswerTests: omnitest(correctVal='YES')
+  Hint: No hint this time.
+
+- Class: text
+  Output: Yes. We could have used mean_of_second50 <- mean(d$second50)
+  
+- Class: text
+  Output: One of the comparison operators we talked about in the classroom was the double equal sign == It checks if two objects are equal and returns TRUE if they are.
+
+- Class: mult_question
+  Output: What would we get if we run this code? mean(d[,2]) == mean(d$second50)
+  AnswerChoices: TRUE;FALSE
+  CorrectAnswer: TRUE
+  AnswerTests: omnitest(correctVal='TRUE')
+  Hint: No hint this time.
+
+- Class: cmd_question
+  Output: Now type mean(d[,2]) == mean(d$second50) and hit Enter to see the result.
+  CorrectAnswer: mean(d[,2]) == mean(d$second50)
+  AnswerTests: omnitest(correctExpr='mean(d[,2]) == mean(d$second50)')
+  Hint: Read the instruction again :)
+
+- Class: text
+  Output: Good. Now let's learn how to use functions.
+  
+- Class: cmd_question
+  Output: First, create a variable called x and assign sample(1:10) to it
+  CorrectAnswer: x <- sample(1:10)
+  AnswerTests: omnitest(correctExpr='x <- sample(1:10)')
+  Hint: Use the assignment operator, the arrow thingy.
+
+- Class: cmd_question
+  Output: Now type x to see what's inside it
+  CorrectAnswer: x
+  AnswerTests: omnitest(correctExpr='x')
+  Hint: Just type x and hit Enter/Return.
+
+- Class: test
+  Output: We are going to use x in our next example.
+
+- Class: text
+  Output: Now back to functions. We can use many functions to do operations on x and get things done. Some functions are more common/basic and we get to remember their names. Others, we have to google and find whenever we need them based on the job we need to do.
+  
+- Class: text
+  Output: sort() is a basic function. it sorts a vector. let's try using it
+
+- Class: cmd_question
+  Output: Feed our x variable to sort() and see what the result will be
+  CorrectAnswer: sort(x)
+  AnswerTests: omnitest(correctExpr='sort(x)')
+  Hint: x goes into the ().
+
+- Class: text
+  Output: As you can see, sort() sorts a vector in an increasing order.
+  
+- Class: text
+  Output: What if you need to sort a vector in a decreasing order?
+  
+- Class: text
+  Output: All functions take additional parameters, called arguments, that tells them to do things in certain ways.
+  
+- Class: text
+  Output: Most of these arguments have default values. So you don't have to provide these arguments to the function.
+  
+- Class: text
+  Output: However, if you need to do something differently from the default value, you need to specify the value of the argument.
+
+- Class: cmd_question
+  Output: Now, type ?sort or help(sort) to see the help documentation for the sort() function in the right pane of RStudio.
+  CorrectAnswer: ?sort
+  AnswerTests: any_of_exprs('?sort', 'help(sort)')
+  Hint: Type ?sort and hit Enter.
+  
+- Class: text
+  Output: Among the list of arguments for sort() on its help page, can you find an argument that changes the order in which sort() sorts a vector?
+  
+- Class: mult_question
+  Output: Which option below is that argument?
+  AnswerChoices: decreasing;increasing
+  CorrectAnswer: decreasing
+  AnswerTests: omnitest(correctVal='decreasing')
+  Hint: Check out the help for sort()
+
+- Class: cmd_question
+  Output: As the last question in this practice session, can you sort x in a decreasing order and assign the result to a new variable called y? You will need to set the decreasing argument equal to TRUE
+  CorrectAnswer: y <- sort(x, decreasing = TRUE)
+  AnswerTests: omnitest(correctExpr='y <- sort(x, decreasing = TRUE)')
+  Hint: You need to add the decreasing argument to the sort() command and equate it to TRUE; The argument has to be separated from the other input to the sort command with a comma.  
+
+- Class: text
+  Output: Congratulations! We are all done for this session, and you have done great :).
+
+- Class: text
+  Output: Thanks for taking the time to do this practice session. I hope you have enjoyed it.
+  
+- Class: text
+  Output: I created this lesson specifically for our marketing analytics class at UNH to cover a few of R Basics. However, your practice doesn't have to stop here. After this session ends, you can keep learning R by installing and using the free R lessons available in swirl(). You can install some of these courses by running the appropriate install.course commands in the Script that I shared with you.
+
+- Class: text
+  Output: Have fun learning :D   Best, Dr. Khanlari
+  
+  
